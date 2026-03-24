@@ -253,8 +253,8 @@
 
     <!-- 로그인 폼 -->
     <div class="auth-box card" id="login-box">
-        <h1>Sign In</h1>
-        <p class="subtitle">Welcome back. Enter your credentials to continue.</p>
+        <h1>로그인</h1>
+        <p class="subtitle">이메일과 비밀번호를 입력해주세요.</p>
 
         <div class="form-group">
             <label for="login-email">Email</label>
@@ -265,46 +265,46 @@
             <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
         </div>
 
-        <p class="error-msg" id="login-error">Invalid email or password.</p>
+        <p class="error-msg" id="login-error">이메일 또는 비밀번호가 올바르지 않습니다.</p>
 
-        <button class="btn btn-primary" id="btn-login">Sign In</button>
+        <button class="btn btn-primary" id="btn-login">로그인</button>
 
         <p class="auth-switch">
-            Don't have an account?
-            <a id="go-register">Create one</a>
+            계정이 없으신가요?
+            <a id="go-register">회원가입</a>
         </p>
     </div>
 
     <!-- 회원가입 폼 -->
     <div class="auth-box card hidden" id="register-box">
-        <h1>Create Account</h1>
-        <p class="subtitle">Sign up to get started.</p>
+        <h1>회원가입</h1>
+        <p class="subtitle">계정을 만들어 시작하세요.</p>
 
         <div class="form-group">
-            <label for="register-name">Full Name</label>
-            <input type="text" id="register-name" placeholder="John Doe">
+            <label for="register-name">이름</label>
+            <input type="text" id="register-name" placeholder="홍길동">
         </div>
         <div class="form-group">
-            <label for="register-email">Email</label>
+            <label for="register-email">이메일</label>
             <input type="email" id="register-email" placeholder="you@example.com">
         </div>
         <div class="form-group">
-            <label for="register-password">Password</label>
-            <input type="password" id="register-password" placeholder="Min. 6 characters">
+            <label for="register-password">비밀번호</label>
+            <input type="password" id="register-password" placeholder="6자 이상 입력">
         </div>
         <div class="form-group">
-            <label for="register-confirm">Confirm Password</label>
-            <input type="password" id="register-confirm" placeholder="Repeat password">
+            <label for="register-confirm">비밀번호 확인</label>
+            <input type="password" id="register-confirm" placeholder="비밀번호 재입력">
         </div>
 
         <p class="error-msg" id="register-error"></p>
-        <p class="success-msg" id="register-success">Account created! You can now sign in.</p>
+        <p class="success-msg" id="register-success">회원가입이 완료되었습니다. 로그인해주세요.</p>
 
-        <button class="btn btn-primary" id="btn-register">Create Account</button>
+        <button class="btn btn-primary" id="btn-register">회원가입</button>
 
         <p class="auth-switch">
-            Already have an account?
-            <a id="go-login">Sign in</a>
+            이미 계정이 있으신가요?
+            <a id="go-login">로그인</a>
         </p>
     </div>
 
@@ -318,7 +318,7 @@
         <span class="nav-brand">PROBE Demo</span>
         <div class="nav-right">
             <span id="nav-username"></span>
-            <button class="btn btn-danger" id="btn-logout">Logout</button>
+            <button class="btn btn-danger" id="btn-logout">로그아웃</button>
         </div>
     </nav>
 
@@ -394,7 +394,7 @@
 
         document.getElementById('nav-username').textContent = user.name;
         document.getElementById('welcome-message').textContent =
-            'Welcome back, ' + user.name + '. Here is your activity summary.';
+            user.name + '님, 환영합니다. 활동 요약을 확인하세요.';
         document.getElementById('profile-name').textContent = user.name;
         document.getElementById('profile-email').textContent = user.email;
     }
@@ -429,7 +429,7 @@
         errorEl.style.display = 'none';
 
         if (!email || !password) {
-            errorEl.textContent = 'Please fill in all fields.';
+            errorEl.textContent = '이메일과 비밀번호를 입력해주세요.';
             errorEl.style.display = 'block';
             return;
         }
@@ -440,7 +440,7 @@
         });
 
         if (!user) {
-            errorEl.textContent = 'Invalid email or password.';
+            errorEl.textContent = '이메일 또는 비밀번호가 올바르지 않습니다.';
             errorEl.style.display = 'block';
             return;
         }
@@ -468,19 +468,19 @@
         successEl.style.display = 'none';
 
         if (!name || !email || !password || !confirm) {
-            errorEl.textContent = 'Please fill in all fields.';
+            errorEl.textContent = '모든 항목을 입력해주세요.';
             errorEl.style.display = 'block';
             return;
         }
 
         if (password.length < 6) {
-            errorEl.textContent = 'Password must be at least 6 characters.';
+            errorEl.textContent = '비밀번호는 6자 이상이어야 합니다.';
             errorEl.style.display = 'block';
             return;
         }
 
         if (password !== confirm) {
-            errorEl.textContent = 'Passwords do not match.';
+            errorEl.textContent = '비밀번호가 일치하지 않습니다.';
             errorEl.style.display = 'block';
             return;
         }
@@ -489,7 +489,7 @@
         var exists = users.find(function (u) { return u.email === email; });
 
         if (exists) {
-            errorEl.textContent = 'An account with this email already exists.';
+            errorEl.textContent = '이미 사용 중인 이메일입니다.';
             errorEl.style.display = 'block';
             return;
         }
